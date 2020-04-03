@@ -51,13 +51,11 @@ export default {
   },
 }
 </script>
-<style>
+<style >
 
 /* BASIC */
 
-html {
-  background-color: #56baed;
-}
+
 
 body {
   font-family: "Poppins", sans-serif;

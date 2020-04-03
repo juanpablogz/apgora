@@ -392,7 +392,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #ag-canvas {
   height: 100%;
   display: grid;
