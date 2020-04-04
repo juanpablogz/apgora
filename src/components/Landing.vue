@@ -1,10 +1,8 @@
 <template>
   <div>
     <body>
-   
-
       <!-- ***** Preloader Start ***** -->
-       <!-- <div id="preloader">
+      <!-- <div id="preloader">
         <div class="jumper">
           <div></div>
           <div></div>
@@ -18,40 +16,196 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-                  <b-navbar toggleable="lg" type="dark"  class="main-nav">
-                        <b-navbar-brand href="#"><img src="https://img.icons8.com/color/48/000000/ruby-gem.png" alt="logo"/></b-navbar-brand>
+              <b-navbar toggleable="lg" type="dark" class="main-nav">
+                <b-navbar-brand href="#"
+                  ><img
+                    src="https://img.icons8.com/color/48/000000/ruby-gem.png"
+                    alt="logo"
+                /></b-navbar-brand>
 
-                        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+                <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-                        <b-collapse id="nav-collapse" is-nav >
-                        <b-navbar-nav>
-                            <b-nav-item a href="#welcome" class="active">Inicio</b-nav-item>
-                            <b-nav-item a href="#work-process">Tu oficina</b-nav-item>
-                            <b-nav-item a href="#features">Sobre nosotros</b-nav-item>
-                            <b-nav-item a href="#testimonials">Testimonios</b-nav-item>
-                            <b-nav-item a href="#pricing-plans">Planes y precios</b-nav-item>
-                            <b-nav-item a href="#blog">Actualizaciones</b-nav-item>
-                            <b-nav-item a href="#contact-us">Contactanos</b-nav-item>
-                             <b-nav-item a href="/#/sign-in">Iniciar sesión</b-nav-item>
-                             <b-nav-item a href="/#/sign-in">Registrarme</b-nav-item>
-                        </b-navbar-nav>
+                <b-collapse id="nav-collapse" is-nav>
+                  <b-navbar-nav>
+                    <b-nav-item a href="#welcome">Inicio</b-nav-item>
+                    <b-nav-item a href="#work-process">Tu oficina</b-nav-item>
+                    <b-nav-item a href="#features">Sobre nosotros</b-nav-item>
+                    <b-nav-item a href="#testimonials">Testimonios</b-nav-item>
+                    <b-nav-item a href="#pricing-plans"
+                      >Planes y precios</b-nav-item
+                    >
+                    <b-nav-item a href="#blog">Actualizaciones</b-nav-item>
+                    <b-nav-item a href="#contact-us">Contactanos</b-nav-item>
 
-                        <!-- Right aligned nav items -->
-                        <b-navbar-nav class="nav">
-           
-                            
-                            <!-- <b-nav-item-dropdown right>
-                    
-                            <template v-slot:button-content>
-                                <em>User</em>
-                            </template>
-                            <b-dropdown-item href="#">Profile</b-dropdown-item>
-                            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                            </b-nav-item-dropdown> -->
-                        </b-navbar-nav>
-                        </b-collapse>
-                </b-navbar>
-      
+                    <!-- sign-in -->
+                    <div>
+                      <mdb-btn
+                        size="sm"
+                        color="purple"
+                        @click.native="elegant = true"
+                        >SigIn
+                      </mdb-btn>
+                      <mdb-modal
+                        :show="elegant"
+                        @close="elegant = false"
+                        elegant
+                      >
+                        <mdb-modal-header class="text-center">
+                          <mdb-modal-title tag="h3" bold class="w-100 my-3"
+                            >Sign in</mdb-modal-title
+                          >
+                        </mdb-modal-header>
+                        <mdb-modal-body class="mx-3">
+                          <mdb-input
+                            v-model="email"
+                            label="Your email"
+                            type="email"
+                            class="mb-5 grey-text"
+                          />
+                          <mdb-input
+                            v-model="password"
+                            label="Enter password"
+                            type="password"
+                            class="pb-3"
+                          ></mdb-input>
+                          <p
+                            class="font-small blue-text d-flex justify-content-end mb-5"
+                          >
+                            Forgot <a class="ml-1"> Password?</a>
+                          </p>
+                          <div class="text-center mb-3">
+                            <mdb-btn
+                              gradient="purple"
+                              type="submit"
+                              @click="action"
+                              class="fadeIn fourth"
+                              value="Ingresar"
+                              >Ingresar</mdb-btn
+                            >
+                          </div>
+                          <p
+                            class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"
+                          >
+                            or Sign in with:
+                          </p>
+                          <mdb-row center class="my-3">
+                            <mdb-btn
+                              color="white"
+                              rounded
+                              class="mr-md-3 z-depth-1a"
+                              ><mdb-icon fab color="info" icon="facebook-f"
+                            /></mdb-btn>
+                            <mdb-btn
+                              color="white"
+                              rounded
+                              class="mr-md-3 z-depth-1a"
+                              ><mdb-icon fab color="info" icon="twitter"
+                            /></mdb-btn>
+                            <mdb-btn
+                              color="white"
+                              rounded
+                              class="mr-md-3 z-depth-1a"
+                              ><mdb-icon fab color="info" icon="google-plus-g"
+                            /></mdb-btn>
+                          </mdb-row>
+                        </mdb-modal-body>
+                        <mdb-modal-footer class="mx-5 pt-3 mb-1" end>
+                          <p class="font-small grey-text">
+                            Not a member? <a class="blue-text ml-1">Sign Up</a>
+                          </p>
+                        </mdb-modal-footer>
+                      </mdb-modal>
+                    </div>
+                    <!-- end sign-in -->
+                    <!-- sign-up  -->
+                    <div>
+                      <mdb-btn
+                        size="sm"
+                        color="purple"
+                        @click.native="elegant = true"
+                        >SignUp
+                      </mdb-btn>
+                      <mdb-modal
+                        :show="elegant"
+                        @close="elegant = false"
+                        elegant
+                      >
+                        <mdb-modal-header class="text-center">
+                          <mdb-modal-title tag="h3" bold class="w-100 my-3"
+                            >Sign in</mdb-modal-title
+                          >
+                        </mdb-modal-header>
+                        <mdb-modal-body class="mx-3">
+                          <mdb-input
+                            v-model="email"
+                            label="Your email"
+                            type="email"
+                            class="mb-5 grey-text"
+                          />
+                          <mdb-input
+                            v-model="password"
+                            label="Enter password"
+                            type="password"
+                            class="pb-3"
+                          ></mdb-input>
+                          <mdb-input
+                            v-model="passwordConfirmation"
+                            label="Enter password"
+                            type="password"
+                            class="pb-3"
+                          ></mdb-input>
+                          <p
+                            class="font-small blue-text d-flex justify-content-end mb-5"
+                          >
+                            Forgot <a class="ml-1"> Password?</a>
+                          </p>
+                          <div class="text-center mb-3">
+                            <mdb-btn
+                              gradient="purple"
+                              type="submit"
+                              @click="action2"
+                              class="fadeIn fourth"
+                              value="Ingresar"
+                              >Ingresar</mdb-btn
+                            >
+                          </div>
+                          <p
+                            class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"
+                          >
+                            or Sign in with:
+                          </p>
+                          <mdb-row center class="my-3">
+                            <mdb-btn
+                              color="white"
+                              rounded
+                              class="mr-md-3 z-depth-1a"
+                              ><mdb-icon fab color="info" icon="facebook-f"
+                            /></mdb-btn>
+                            <mdb-btn
+                              color="white"
+                              rounded
+                              class="mr-md-3 z-depth-1a"
+                              ><mdb-icon fab color="info" icon="twitter"
+                            /></mdb-btn>
+                            <mdb-btn
+                              color="white"
+                              rounded
+                              class="mr-md-3 z-depth-1a"
+                              ><mdb-icon fab color="info" icon="google-plus-g"
+                            /></mdb-btn>
+                          </mdb-row>
+                        </mdb-modal-body>
+                        <mdb-modal-footer class="mx-5 pt-3 mb-1" end>
+                          <p class="font-small grey-text">
+                            Not a member? <a class="blue-text ml-1">SignIn</a>
+                          </p>
+                        </mdb-modal-footer>
+                      </mdb-modal>
+                    </div>
+                    <!-- end-sign-up -->
+                  </b-navbar-nav>
+                </b-collapse>
+              </b-navbar>
             </div>
           </div>
         </div>
@@ -68,11 +222,11 @@
                 class="offset-xl-3 col-xl-6 offset-lg-2 col-lg-8 col-md-12 col-sm-12"
               >
                 <h1>
-                  Tu comodidad <strong>Nuestra </strong><br />Preocupación
-                  Por eso creamos tu  <strong>Oficina virtual</strong>
+                  Tu comodidad <strong>Nuestra </strong><br />Preocupación Por
+                  eso creamos tu <strong>Oficina virtual</strong>
                 </h1>
                 <p>
-                Por eso creamos esta plataforma para tu comidad
+                  Por eso creamos esta plataforma para tu comidad
                 </p>
                 <a href="#features" class="main-button-slider">Conocenos</a>
               </div>
@@ -102,7 +256,11 @@
                     </div>
                     <h5 class="features-title">Video conferencia</h5>
                     <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis voluptates quasi obcaecati aperiam unde dignissimos placeat tenetur! Ut consequuntur asperiores autem quasi non ipsam qui blanditiis dignissimos iste officiis.
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Tempore perferendis voluptates quasi obcaecati aperiam
+                      unde dignissimos placeat tenetur! Ut consequuntur
+                      asperiores autem quasi non ipsam qui blanditiis
+                      dignissimos iste officiis.
                     </p>
                   </div>
                 </div>
@@ -120,7 +278,12 @@
                       /></i>
                     </div>
                     <h5 class="features-title">Espacio para tu trabajo</h5>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores ducimus vel sunt explicabo exercitationem excepturi in dignissimos beatae dolor at dicta, maxime veniam ab, esse ipsa, eaque nam! Iste, tempora.</p>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Maiores ducimus vel sunt explicabo exercitationem
+                      excepturi in dignissimos beatae dolor at dicta, maxime
+                      veniam ab, esse ipsa, eaque nam! Iste, tempora.
+                    </p>
                   </div>
                 </div>
                 <!-- ***** Features Small Item End ***** -->
@@ -138,7 +301,10 @@
                     </div>
                     <h5 class="features-title">Espacio para tu aprendizaje</h5>
                     <p>
-                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ea omnis, et vero sunt doloribus reiciendis dolorem facilis quis doloremque. Quasi voluptas, laboriosam aliquid laborum ipsum et! Amet, omnis ipsum.
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Animi ea omnis, et vero sunt doloribus reiciendis dolorem
+                      facilis quis doloremque. Quasi voluptas, laboriosam
+                      aliquid laborum ipsum et! Amet, omnis ipsum.
                     </p>
                   </div>
                 </div>
@@ -235,7 +401,8 @@
                 <div class="info">
                   <h1>Tu lugar de trabajo</h1>
                   <p>
-                    Encontraras todo lo necesario para desempeñarte correctamente de forma remota.
+                    Encontraras todo lo necesario para desempeñarte
+                    correctamente de forma remota.
                   </p>
                 </div>
               </div>
@@ -331,7 +498,9 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
               <div class="team-item">
                 <div class="team-content">
-                  <i><img src="@/assets/images/testimonial-icon.png" alt=""/></i>
+                  <i
+                    ><img src="@/assets/images/testimonial-icon.png" alt=""
+                  /></i>
                   <p>
                     Proin a neque nisi. Nam ipsum nisi, venenatis ut nulla quis,
                     egestas scelerisque orci. Maecenas a finibus odio.
@@ -352,7 +521,9 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
               <div class="team-item">
                 <div class="team-content">
-                  <i><img src="@/assets/images/testimonial-icon.png" alt=""/></i>
+                  <i
+                    ><img src="@/assets/images/testimonial-icon.png" alt=""
+                  /></i>
                   <p>
                     Integer molestie aliquam gravida. Nullam nec arcu finibus,
                     imperdiet nulla vitae, placerat nibh. Cras maximus venenatis
@@ -374,7 +545,9 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
               <div class="team-item">
                 <div class="team-content">
-                  <i><img src="@/assets/images/testimonial-icon.png" alt=""/></i>
+                  <i
+                    ><img src="@/assets/images/testimonial-icon.png" alt=""
+                  /></i>
                   <p>
                     Quisque diam odio, maximus ac consectetur eu, auctor non
                     lorem. Cras quis est non ante ultrices molestie. Ut vehicula
@@ -645,7 +818,7 @@
             <div class="offset-lg-3 col-lg-6">
               <div class="center-text">
                 <p>
-                Cuentanos tu experencia y tus sugerencias.
+                  Cuentanos tu experencia y tus sugerencias.
                 </p>
               </div>
             </div>
@@ -658,11 +831,11 @@
               <h5 class="margin-bottom-30">Contactanos</h5>
               <div class="contact-text">
                 <p>
-                  Dejanos tu opinion 
+                  Dejanos tu opinion
                   <br />sobre tu experiencia
                 </p>
                 <p>
-                    Con nuestra aplicacion 
+                  Con nuestra aplicacion
                 </p>
               </div>
             </div>
@@ -716,7 +889,7 @@
                           id="form-submit"
                           class="main-button"
                         >
-                         Enviar mensaje
+                          Enviar mensaje
                         </button>
                       </fieldset>
                     </div>
@@ -757,7 +930,7 @@
           <div class="row">
             <div class="col-lg-12">
               <p class="copyright">
-                Copyright &copy; 2020 JPDB 
+                Copyright &copy; 2020 JPDB
               </p>
             </div>
           </div>
@@ -767,20 +940,88 @@
   </div>
 </template>
 <script>
-require('@/assets/css/style.css')
-require('@/assets/css/font-awesome.css')
-
+import firebase from "firebase";
+require("@/assets/css/style.css");
+require("@/assets/css/font-awesome.css");
+import {
+  mdbContainer,
+  mdbBtn,
+  mdbModal,
+  mdbModalHeader,
+  mdbModalBody,
+  mdbInput,
+  mdbModalFooter,
+  mdbModalTitle,
+  mdbRow,
+  mdbIcon,
+} from "mdbvue";
 export default {
+  data() {
+    return {
+      elegant: false,
+      email: "damagoza@gmail.com",
+      password: "cataratas",
+      passwordConfirmation: "cataratas",
+    };
+  },
   name: "landing",
   components: {
     // HelloWorld
-  }
+    mdbContainer,
+    mdbBtn,
+    mdbModal,
+    mdbModalHeader,
+    mdbModalBody,
+    mdbInput,
+    mdbModalFooter,
+    mdbModalTitle,
+    mdbRow,
+    mdbIcon,
+  },
+  methods: {
+    action() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(
+          (user) => {
+            console.log("login" + JSON.stringify(user));
+            window.localStorage.setItem("authenticated", true);
+            window.localStorage.setItem("user", JSON.stringify(user));
+            this.$router.push("/home");
+          },
+          (err) => {
+            console.log("Erro -> " + JSON.stringify(err));
+            window.localStorage.setItem("authenticated", false);
+            window.localStorage.setItem("user", null);
+          }
+        );
+    },
+    action2() {
+      if (this.password === this.passwordConfirmation) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(
+            (user) => {
+              console.log("login" + JSON.stringify(user));
+              window.localStorage.setItem("authenticated", true);
+              window.localStorage.setItem("user", JSON.stringify(user));
+              this.$router.push("/home");
+            },
+            (err) => {
+              console.log("Erro -> " + JSON.stringify(err));
+              window.localStorage.setItem("authenticated", false);
+              window.localStorage.setItem("user", null);
+            }
+          );
+      }
+    },
+  },
 };
 </script>
 <style scoped>
-    .nav {
+.nav {
   background-color: #8261ee;
-
-    }
+}
 </style>
-
