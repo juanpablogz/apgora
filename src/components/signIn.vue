@@ -106,7 +106,7 @@ export default {
             console.log("login" + JSON.stringify(user));
             window.localStorage.setItem("authenticated", true);
             window.localStorage.setItem("user", JSON.stringify(user));
-            this.$router.push("/home");
+            this.$router.push("/Dashboard");
           },
           (err) => {
             console.log("Erro -> " + JSON.stringify(err));

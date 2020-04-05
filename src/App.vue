@@ -4,8 +4,8 @@
 
 <script>
 export default {
-  name: "App"
-}
+  name: "App",
+};
 </script>
 
 <style>
@@ -27,7 +27,7 @@ body,
 .full {
   height: 100%;
   min-height: 100%;
-  font-size: 14px!important;
+  font-size: 14px !important;
 }
 
 img {

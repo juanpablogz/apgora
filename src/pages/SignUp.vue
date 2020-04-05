@@ -1,66 +1,94 @@
 <template>
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <h3>Iniciar sesión</h3>
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <h3>Iniciar sesión</h3>
+      </div>
+
+      <!-- Login Form -->
+      <form>
+        <input
+          v-model="email"
+          type="text"
+          id="login"
+          class="fadeIn second"
+          name="login"
+          placeholder="login"
+        />
+        <input
+          v-model="password"
+          type="text"
+          id="password"
+          class="fadeIn third"
+          name="login"
+          placeholder="password"
+        />
+        <input
+          v-model="passwordConfirmation"
+          type="text"
+          id="password"
+          class="fadeIn third"
+          name="login"
+          placeholder="password"
+        />
+        <input
+          type="submit"
+          @click.prevent="action"
+          class="fadeIn fourth"
+          value="Ingresar"
+        />
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Recordar contraseña</a> |
+        <a class="underlineHover" href="/#/sign-in">Iniciar sesión</a>
+      </div>
     </div>
-
-    <!-- Login Form -->
-    <form>
-      <input v-model="email" type="text" id="login" class="fadeIn second" name="login" placeholder="login">
-      <input v-model="password" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input v-model="passwordConfirmation" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" @click.prevent="action" class="fadeIn fourth" value="Ingresar">
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Recordar contraseña</a> |
-      <a class="underlineHover" href="/#/sign-in">Iniciar sesión</a>
-    </div>
-
   </div>
-</div>
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from "firebase";
 export default {
-  name: 'SingIn',
- data () {
+  name: "SingIn",
+  data() {
     return {
-      email: 'damagoza@gmail.com',
-      password: 'cataratas',
-      passwordConfirmation: 'cataratas',
-      accept: false
-    }
+      email: "damagoza@gmail.com",
+      password: "cataratas",
+      passwordConfirmation: "cataratas",
+      accept: false,
+    };
   },
-  components: {
-
-  },
+  components: {},
   methods: {
     action() {
-      if(this.password === this.passwordConfirmation){
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(user => {
-          console.log("login" + JSON.stringify(user))
-          window.localStorage.setItem('authenticated', true)
-          window.localStorage.setItem('user', JSON.stringify(user))
-          this.$router.push("/home")
-        }, (err) => {
-          console.log("Erro -> " + JSON.stringify(err))
-          window.localStorage.setItem('authenticated', false)
-          window.localStorage.setItem('user', null)
-        })      
+      if (this.password === this.passwordConfirmation) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.email, this.password)
+          .then(
+            (user) => {
+              console.log("login" + JSON.stringify(user));
+              window.localStorage.setItem("authenticated", true);
+              window.localStorage.setItem("user", JSON.stringify(user));
+              this.$router.push("/Dashboard");
+            },
+            (err) => {
+              console.log("Erro -> " + JSON.stringify(err));
+              window.localStorage.setItem("authenticated", false);
+              window.localStorage.setItem("user", null);
+            }
+          );
       }
-    }
+    },
   },
-}
+};
 </script>
 <style scoped>
-
 /* BASIC */
 
 html {
@@ -74,7 +102,7 @@ body {
 
 a {
   color: #92badd;
-  display:inline-block;
+  display: inline-block;
   text-decoration: none;
   font-weight: 400;
 }
@@ -84,19 +112,17 @@ h2 {
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
+  display: inline-block;
+  margin: 40px 8px 10px 8px;
   color: #cccccc;
 }
-
-
 
 /* STRUCTURE */
 
 .wrapper {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   min-height: 100%;
@@ -112,8 +138,8 @@ h2 {
   max-width: 450px;
   position: relative;
   padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
@@ -126,8 +152,6 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
-
-
 /* TABS */
 
 h2.inactive {
@@ -139,11 +163,11 @@ h2.active {
   border-bottom: 2px solid #5fbae9;
 }
 
-
-
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
   background-color: #56baed;
   border: none;
   color: white;
@@ -153,8 +177,8 @@ input[type=button], input[type=submit], input[type=reset]  {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
+  box-shadow: 0 10px 30px 0 rgba(95, 186, 233, 0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
   margin: 5px 20px 40px 20px;
@@ -165,11 +189,15 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
   background-color: #39ace7;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type="button"]:active,
+input[type="submit"]:active,
+input[type="reset"]:active {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -177,7 +205,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type="text"] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
@@ -198,16 +226,14 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+input[type="text"]:focus {
   background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
-input[type=text]:placeholder {
+input[type="text"]:placeholder {
   color: #cccccc;
 }
-
-
 
 /* ANIMATIONS */
 
@@ -248,23 +274,44 @@ input[type=text]:placeholder {
 }
 
 /* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .fadeIn {
-  opacity:0;
-  -webkit-animation:fadeIn ease-in 1;
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1;
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
 
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
 }
 
 .fadeIn.first {
@@ -307,19 +354,17 @@ input[type=text]:placeholder {
   color: #0d0d0d;
 }
 
-.underlineHover:hover:after{
+.underlineHover:hover:after {
   width: 100%;
 }
-
-
 
 /* OTHERS */
 
 *:focus {
-    outline: none;
-} 
+  outline: none;
+}
 
 #icon {
-  width:60%;
+  width: 60%;
 }
 </style>

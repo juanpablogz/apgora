@@ -38,17 +38,20 @@
                     <b-nav-item a href="#contact-us">Contactanos</b-nav-item>
 
                     <!-- sign-in -->
-                    <div>
+
+                    <div class="sigIn" style="margin: 0;">
                       <mdb-btn
                         size="sm"
                         color="purple"
                         @click.native="elegant = true"
                         >Sig In
                       </mdb-btn>
+
                       <mdb-modal
                         :show="elegant"
                         @close="elegant = false"
                         elegant
+                        style="margin: 0;"
                       >
                         <mdb-modal-header class="text-center">
                           <mdb-modal-title tag="h3" bold class="w-100 my-3"
@@ -111,14 +114,15 @@
                         </mdb-modal-body>
                         <mdb-modal-footer class="mx-5 pt-3 mb-1" end>
                           <p class="font-small grey-text">
-                            Not a member? <a class="blue-text ml-1">Sign Up</a>
+                            Not a member?
+                            <a class="blue-text ml-1">Sign Up</a>
                           </p>
                         </mdb-modal-footer>
                       </mdb-modal>
                     </div>
                     <!-- end sign-in -->
                     <!-- sign-up  -->
-                    <div>
+                    <div class="sigIn">
                       <mdb-btn
                         size="sm"
                         color="purple"
@@ -985,7 +989,7 @@ export default {
             console.log("login" + JSON.stringify(user));
             window.localStorage.setItem("authenticated", true);
             window.localStorage.setItem("user", JSON.stringify(user));
-            this.$router.push("/home");
+            this.$router.push("Dashboard");
           },
           (err) => {
             console.log("Erro -> " + JSON.stringify(err));
@@ -1004,7 +1008,7 @@ export default {
               console.log("login" + JSON.stringify(user));
               window.localStorage.setItem("authenticated", true);
               window.localStorage.setItem("user", JSON.stringify(user));
-              this.$router.push("/home");
+              this.$router.push("Dashboard");
             },
             (err) => {
               console.log("Erro -> " + JSON.stringify(err));
@@ -1020,5 +1024,9 @@ export default {
 <style scoped>
 .nav {
   background-color: #8261ee;
+  margin: 0px;
+}
+#sigIn {
+  margin: 0px;
 }
 </style>
