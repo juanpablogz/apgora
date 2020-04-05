@@ -11,19 +11,21 @@
         <div class="login-body">
           <div class="columns">
             <div class="column is-12">
-                <InputChannel @change="handleChannel" placeholder="Input a room name here"></InputChannel>
+              <InputChannel
+                @change="handleChannel"
+                placeholder="Input a room name here"
+              ></InputChannel>
             </div>
           </div>
           <div class="columns">
             <div class="column is-7">
-              <BaseOptions 
-                @change="handleBaseMode">
-              </BaseOptions>
+              <BaseOptions @change="handleBaseMode"> </BaseOptions>
             </div>
             <div class="column is-5">
-              <AdvancedOptions 
-                :onRadioChange="handleTranscode" 
-                :onSelectChange="handleVideoProfile">
+              <AdvancedOptions
+                :onRadioChange="handleTranscode"
+                :onSelectChange="handleVideoProfile"
+              >
               </AdvancedOptions>
             </div>
           </div>
@@ -31,35 +33,43 @@
             <div class="column">
               <div id="attendeeMode" class="control">
                 <label class="radio">
-                  <input @click="handleAttendeeMode"
-                  value="video" type="radio" 
-                  name="attendee" checked />
-                  <span class="radio-btn">
-                  </span>
-                  <span class="radio-img video">
-                  </span>
-                  <span class="radio-msg">Video Call : join with video call</span>
+                  <input
+                    @click="handleAttendeeMode"
+                    value="video"
+                    type="radio"
+                    name="attendee"
+                    checked
+                  />
+                  <span class="radio-btn"> </span>
+                  <span class="radio-img video"> </span>
+                  <span class="radio-msg"
+                    >Video Call : join with video call</span
+                  >
                 </label>
                 <br />
                 <label class="radio">
-                  <input @click="handleAttendeeMode"
-                  value="audio-only" type="radio" 
-                  name="attendee" />
-                  <span class="radio-btn">
-                  </span>
-                  <span class="radio-img audio">
-                  </span>
-                  <span class="radio-msg">Audio-only : join with audio call</span>
+                  <input
+                    @click="handleAttendeeMode"
+                    value="audio-only"
+                    type="radio"
+                    name="attendee"
+                  />
+                  <span class="radio-btn"> </span>
+                  <span class="radio-img audio"> </span>
+                  <span class="radio-msg"
+                    >Audio-only : join with audio call</span
+                  >
                 </label>
                 <br />
                 <label class="radio">
-                  <input @click="handleAttendeeMode"
-                  value="audience" type="radio" 
-                  name="attendee" />
-                  <span class="radio-btn">
-                  </span>
-                  <span class="radio-img audience">
-                  </span>
+                  <input
+                    @click="handleAttendeeMode"
+                    value="audience"
+                    type="radio"
+                    name="attendee"
+                  />
+                  <span class="radio-btn"> </span>
+                  <span class="radio-img audience"> </span>
                   <span class="radio-msg">Audience : join as an audience</span>
                 </label>
               </div>
@@ -67,18 +77,19 @@
           </div>
         </div>
         <div class="login-footer">
-          <a id="joinBtn" 
+          <a
+            id="joinBtn"
             @click="handleJoin"
-            :disabled="!joinBtn" 
-            class="ag-rounded button is-info">Join
+            :disabled="!joinBtn"
+            class="ag-rounded button is-info"
+            >Join
           </a>
         </div>
         <div class="login-footer">
-          <a id="joinBtn" 
-            @click="logout"
-            class="ag-rounded button is-info">Salir
+          <a id="joinBtn" @click="logout" class="ag-rounded button is-info"
+            >Salir
           </a>
-        </div>        
+        </div>
       </section>
     </div>
     <div class="ag-footer">
@@ -86,20 +97,20 @@
         <span>Powered By Agora</span>
       </a>
       <div>
-      <span>Interested in Agora video call SDK? Contact </span>
-      <span class="ag-contact">sales@agora.io</span>
+        <span>Interested in Agora video call SDK? Contact </span>
+        <span class="ag-contact">sales@agora.io</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import * as Cookies from "js-cookie"
+import * as Cookies from "js-cookie";
 export default {
   components: {
     BaseOptions: () => import("@/components/BaseOptions"),
     AdvancedOptions: () => import("@/components/AdvancedOptions"),
-    InputChannel: () => import("@/components/InputChannel")
+    InputChannel: () => import("@/components/InputChannel"),
   },
 
   data() {
@@ -109,14 +120,14 @@ export default {
       baseMode: "avc",
       transcode: "interop",
       attendeeMode: "video",
-      videoProfile: "480p_4"
+      videoProfile: "480p_4",
     };
   },
 
   methods: {
-    logout(){
-      window.localStorage.clear()
-      this.$router.push('/');      
+    logout() {
+      window.localStorage.clear();
+      this.$router.push("/");
     },
     handleChannel(val, state) {
       this.channel = val;
@@ -149,20 +160,20 @@ export default {
       Cookies.set("attendeeMode", this.attendeeMode);
       Cookies.set("videoProfile", this.videoProfile);
       this.$router.push("/meeting");
-    }
+    },
   },
 
   mounted() {
     this.$nextTick(() => {
-      window.addEventListener("keypress", e => {
+      window.addEventListener("keypress", (e) => {
         e.keyCode === 13 && this.handleJoin();
       });
     });
-  }
+  },
 };
 </script>
 
-<style scoped>
+<style>
 .index.wrapper {
   background: url("../assets/images/ag-index-background.png") center no-repeat;
   background-size: cover;

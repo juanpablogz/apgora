@@ -1,39 +1,46 @@
 <template>
   <div id="ag-canvas">
     <div class="ag-btn-group">
-      <span 
+      <span
         @click="handleExit"
         class="ag-btn exitBtn"
-        :class="{'disabled': !readyState}"
-        title="Exit">
+        :class="{ disabled: !readyState }"
+        title="Exit"
+      >
         <i class="ag-icon ag-icon-leave"></i>
       </span>
-      <span v-if="attendeeMode === 'video'"
+      <span
+        v-if="attendeeMode === 'video'"
         @click="handleCamera"
-        class="ag-btn videoControlBtn" 
-        title="Enable/Disable Video">
+        class="ag-btn videoControlBtn"
+        title="Enable/Disable Video"
+      >
         <i class="ag-icon ag-icon-camera"></i>
         <i class="ag-icon ag-icon-camera-off"></i>
       </span>
-      <span v-if="attendeeMode !== 'audience'"
+      <span
+        v-if="attendeeMode !== 'audience'"
         @click="handleMic"
-        class="ag-btn audioControlBtn" 
-        title="Enable/Disable Audio">
+        class="ag-btn audioControlBtn"
+        title="Enable/Disable Audio"
+      >
         <i class="ag-icon ag-icon-mic"></i>
         <i class="ag-icon ag-icon-mic-off"></i>
       </span>
-      <span 
+      <span
         @click="switchDisplay"
         class="ag-btn displayModeBtn"
-        :class="{'disabled': streamList.length > 4}"
-        title="Switch Display Mode">
+        :class="{ disabled: streamList.length > 4 }"
+        title="Switch Display Mode"
+      >
         <i class="ag-icon ag-icon-switch-display"></i>
       </span>
-      <span 
-        class= "ag-btn disableRemoteBtn"
-        :class="{'disabled': streamList.length > 4 || displayMode !== 'pip'}"
+      <span
+        class="ag-btn disableRemoteBtn"
+        :class="{ disabled: streamList.length > 4 || displayMode !== 'pip' }"
         @click="hideRemote"
-        title="Hide Remote Stream">
+        title="Hide Remote Stream"
+      >
         <i class="ag-icon ag-icon-remove-pip"></i>
       </span>
     </div>
@@ -51,14 +58,14 @@ const tile_canvas = {
     "span 6/span 12",
     "span 6/span 12",
     "span 6/span 12",
-    "span 6/span 12/7/13"
+    "span 6/span 12/7/13",
   ],
   "5": [
     "span 3/span 4/13/9",
     "span 3/span 4/13/13",
     "span 3/span 4/13/17",
     "span 3/span 4/13/21",
-    "span 9/span 16/10/21"
+    "span 9/span 16/10/21",
   ],
   "6": [
     "span 3/span 4/13/7",
@@ -66,7 +73,7 @@ const tile_canvas = {
     "span 3/span 4/13/15",
     "span 3/span 4/13/19",
     "span 3/span 4/13/23",
-    "span 9/span 16/10/21"
+    "span 9/span 16/10/21",
   ],
   "7": [
     "span 3/span 4/13/5",
@@ -75,8 +82,8 @@ const tile_canvas = {
     "span 3/span 4/13/17",
     "span 3/span 4/13/21",
     "span 3/span 4/13/25",
-    "span 9/span 16/10/21"
-  ]
+    "span 9/span 16/10/21",
+  ],
 };
 
 export default {
@@ -88,7 +95,7 @@ export default {
       shareStream: {},
       displayMode: "pip",
       streamList: [],
-      readyState: false
+      readyState: false,
     };
   },
 
@@ -99,7 +106,7 @@ export default {
     "channel",
     "baseMode",
     "appId",
-    "uid"
+    "uid",
   ],
 
   methods: {
@@ -108,7 +115,7 @@ export default {
         streamID: uid,
         audio: true,
         video: true,
-        screen: false
+        screen: false,
       };
 
       switch (attendeeMode) {
@@ -131,24 +138,24 @@ export default {
 
     subscribeStreamEvents() {
       let rt = this;
-      rt.client.on("stream-added", function(evt) {
+      rt.client.on("stream-added", function (evt) {
         let stream = evt.stream;
         console.log("New stream added: " + stream.getId());
         console.log("At " + new Date().toLocaleTimeString());
         console.log("Subscribe ", stream);
-        rt.client.subscribe(stream, function(err) {
+        rt.client.subscribe(stream, function (err) {
           console.log("Subscribe stream failed", err);
         });
       });
 
-      rt.client.on("peer-leave", function(evt) {
+      rt.client.on("peer-leave", function (evt) {
         console.log("Peer has left: " + evt.uid);
         console.log(new Date().toLocaleTimeString());
         console.log(evt);
         rt.removeStream(evt.uid);
       });
 
-      rt.client.on("stream-subscribed", function(evt) {
+      rt.client.on("stream-subscribed", function (evt) {
         let stream = evt.stream;
         console.log("Got stream-subscribed event");
         console.log(new Date().toLocaleTimeString());
@@ -157,7 +164,7 @@ export default {
         rt.addStream(stream);
       });
 
-      rt.client.on("stream-removed", function(evt) {
+      rt.client.on("stream-removed", function (evt) {
         let stream = evt.stream;
         console.log("Stream removed: " + stream.getId());
         console.log(new Date().toLocaleTimeString());
@@ -182,7 +189,7 @@ export default {
     },
 
     addStream(stream, push = false) {
-      let repeatition = this.streamList.some(item => {
+      let repeatition = this.streamList.some((item) => {
         return item.getId() === stream.getId();
       });
       if (repeatition) {
@@ -239,7 +246,7 @@ export default {
       list = Array.from(
         document.querySelectorAll(`.ag-item:not(#ag-item-${id})`)
       );
-      list.map(item => {
+      list.map((item) => {
         if (item.style.display !== "none") {
           item.style.display = "none";
         } else {
@@ -271,7 +278,7 @@ export default {
         // redirect to index
         this.$router.push("/");
       }
-    }
+    },
   },
 
   created() {
@@ -281,7 +288,7 @@ export default {
     $.client.init($.appId, () => {
       console.log("AgoraRTC client initialized");
       $.subscribeStreamEvents();
-      $.client.join($.appId, $.channel, $.uid, uid => {
+      $.client.join($.appId, $.channel, $.uid, (uid) => {
         console.log("User " + uid + " join channel successfully");
         console.log("At " + new Date().toLocaleTimeString());
         // create local stream
@@ -291,13 +298,13 @@ export default {
           () => {
             if ($.attendeeMode !== "audience") {
               $.addStream($.localStream, true);
-              $.client.publish($.localStream, err => {
+              $.client.publish($.localStream, (err) => {
                 console.log("Publish local stream error: " + err);
               });
             }
             $.readyState = true;
           },
-          err => {
+          (err) => {
             console.log("getUserMedia failed", err);
             $.readyState = true;
           }
@@ -316,7 +323,7 @@ export default {
           clearTimeout(global._toolbarToggle);
         }
         btnGroup.classList.add("active");
-        global._toolbarToggle = setTimeout(function() {
+        global._toolbarToggle = setTimeout(function () {
           btnGroup.classList.remove("active");
         }, 2000);
       });
@@ -376,7 +383,7 @@ export default {
     }
   },
 
-  beforeDestroy () {
+  beforeDestroy() {
     this.client && this.client.unpublish(this.localStream);
     this.localStream && this.localStream.close();
     this.client &&
@@ -388,11 +395,11 @@ export default {
           console.log("Client failed to leave.");
         }
       );
-  }
+  },
 };
 </script>
 
-<style scoped>
+<style>
 #ag-canvas {
   height: 100%;
   display: grid;
@@ -500,4 +507,3 @@ video {
   max-width: unset !important;
 }
 </style>
-

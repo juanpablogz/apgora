@@ -2,27 +2,34 @@
   <div class="wrapper meeting">
     <div class="ag-header">
       <div class="ag-header-lead">
-        <img class="header-logo" :src="require('../assets/images/ag-logo.png')" alt="" />
+        <img
+          class="header-logo"
+          :src="require('../assets/images/ag-logo.png')"
+          alt=""
+        />
         <span>AgoraWeb v2.1</span>
       </div>
       <div class="ag-header-msg">
-          Room:&nbsp;<span id="room-name">{{channel}}</span>
+        Room:&nbsp;<span id="room-name">{{ channel }}</span>
       </div>
     </div>
     <div class="ag-main">
       <div class="ag-container">
-        <AgoraVideoCall 
+        <AgoraVideoCall
           :videoProfile="videoProfile"
           :channel="channel"
           :transcode="transcode"
           :attendeeMode="attendeeMode"
           :baseMode="baseMode"
           :appId="appId"
-          :uid="uid"></AgoraVideoCall>
-      </div>  
+          :uid="uid"
+        ></AgoraVideoCall>
+      </div>
     </div>
     <div class="ag-footer">
-      <a class="ag-href" href="https://www.agora.io"><span>Powered By Agora</span></a>
+      <a class="ag-href" href="https://www.agora.io"
+        ><span>Powered By Agora</span></a
+      >
       <span>Talk to Support: 400 632 6626</span>
     </div>
   </div>
@@ -31,10 +38,10 @@
 <script>
 import * as Cookies from "js-cookie";
 import AgoraVideoCall from "@/components/AgoraVideoCall";
-import {AGORA_APP_ID} from "@/agora.config"
+import { AGORA_APP_ID } from "@/agora.config";
 export default {
   components: {
-    AgoraVideoCall
+    AgoraVideoCall,
   },
   data() {
     return {
@@ -43,20 +50,20 @@ export default {
       transcode: Cookies.get("transcode") || "interop",
       attendeeMode: Cookies.get("attendeeMode") || "video",
       baseMode: Cookies.get("baseMode") || "avc",
-      uid: undefined
+      uid: undefined,
     };
   },
 
   created() {
-    this.appId = AGORA_APP_ID
+    this.appId = AGORA_APP_ID;
     if (!this.appId) {
-      return alert('Get App ID first!')
+      return alert("Get App ID first!");
     }
-  }
+  },
 };
 </script>
 
-<style scoped>
+<style>
 .meeting.wrapper {
   background: rgb(12, 43, 64);
   height: 100%;
@@ -102,4 +109,3 @@ export default {
   border-radius: 12px;
 }
 </style>
-
