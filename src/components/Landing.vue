@@ -1021,12 +1021,15 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .nav {
   background-color: #8261ee;
   margin: 0px;
 }
 #sigIn {
   margin: 0px;
+}
+.modal-dialog .modal-content {
+  margin: 0px !important;
 }
 </style>

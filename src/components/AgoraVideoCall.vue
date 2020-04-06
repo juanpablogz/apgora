@@ -5,7 +5,7 @@
         @click="handleExit"
         class="ag-btn exitBtn"
         :class="{ disabled: !readyState }"
-        title="Exit"
+        title="Salir"
       >
         <i class="ag-icon ag-icon-leave"></i>
       </span>

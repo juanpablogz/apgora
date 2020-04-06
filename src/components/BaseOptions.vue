@@ -1,9 +1,13 @@
 <template>
-  <div class="dropdown" :class="{'is-active': active}">
-    <div class="dropdown-trigger" 
-      @click="active=!active">
-      <a id="baseMode" class="ag-rounded button" aria-haspopup="true" aria-controls="baseModeOptions">
-        <span id="baseOptionLabel">{{message}}</span>
+  <div class="dropdown" :class="{ 'is-active': active }">
+    <div class="dropdown-trigger" @click="active = !active">
+      <a
+        id="baseMode"
+        class="ag-rounded button"
+        aria-haspopup="true"
+        aria-controls="baseModeOptions"
+      >
+        <span id="baseOptionLabel">{{ message }}</span>
         <span class="icon is-small">
           <i class="ag-icon ag-icon-arrow-down" aria-hidden="true"></i>
         </span>
@@ -11,13 +15,15 @@
     </div>
     <div class="dropdown-menu" id="baseModeOptions" role="menu">
       <div class="dropdown-content">
-        <div v-for="(item, index) in options"
-          class="dropdown-item" 
+        <div
+          v-for="(item, index) in options"
+          class="dropdown-item"
           :key="index"
-          @click="handleSelect(item)">
-          <p>{{item.label}}</p>
+          @click="handleSelect(item)"
+        >
+          <p>{{ item.label }}</p>
           <hr />
-          <p>{{item.content}}</p>
+          <p>{{ item.content }}</p>
         </div>
       </div>
     </div>
@@ -32,17 +38,17 @@ export default {
         {
           label: "Agora Video Call",
           value: "avc",
-          content: "One to one and group calls"
+          content: "One to one and group calls",
         },
         {
           label: "Agora Live",
           value: "al",
           content:
-            "Enabling real-time interactions between the host and the audience"
-        }
+            "Enabling real-time interactions between the host and the audience",
+        },
       ],
       active: false,
-      message: "Agora Video Call"
+      message: "Agora Video Call",
     };
   },
   methods: {
@@ -52,8 +58,8 @@ export default {
       this.message = msg;
       this.active = false;
       this.$emit("change", val);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -91,6 +97,10 @@ export default {
 .dropdown.is-active .dropdown-menu {
   animation: dropdown 0.25s ease-in-out;
 }
+.dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+}
 
 @keyframes dropdown {
   from {
@@ -103,4 +113,3 @@ export default {
   }
 }
 </style>
-

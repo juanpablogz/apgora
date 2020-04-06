@@ -48,7 +48,7 @@
             <div class="admin-up">
               <mdb-icon icon="money-bill-alt" far class="primary-color" />
               <div class="data">
-                <p>SALES</p>
+                <p>Ahorrado</p>
                 <h4>
                   <strong>$2000</strong>
                 </h4>
@@ -74,7 +74,7 @@
             <div class="admin-up">
               <mdb-icon icon="chart-line" class="warning-color" />
               <div class="data">
-                <p>SUBSCRIPTIONS</p>
+                <p></p>
                 <h4>
                   <strong>200</strong>
                 </h4>
@@ -100,7 +100,7 @@
             <div class="admin-up">
               <mdb-icon icon="chart-pie" class="light-blue lighten-1" />
               <div class="data">
-                <p>TRAFFIC</p>
+                <p>Trafico</p>
                 <h4>
                   <strong>20000</strong>
                 </h4>
@@ -1166,7 +1166,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .cascading-admin-card {
   margin: 20px 0;
 }

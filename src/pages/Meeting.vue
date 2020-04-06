@@ -4,13 +4,13 @@
       <div class="ag-header-lead">
         <img
           class="header-logo"
-          :src="require('../assets/images/ag-logo.png')"
-          alt=""
+          src="https://img.icons8.com/color/48/000000/ruby-gem.png"
+          alt="logo"
         />
-        <span>AgoraWeb v2.1</span>
+        <span>AppGora v1.0</span>
       </div>
       <div class="ag-header-msg">
-        Room:&nbsp;<span id="room-name">{{ channel }}</span>
+        Sala:&nbsp;<span id="room-name">{{ channel }}</span>
       </div>
     </div>
     <div class="ag-main">
@@ -97,7 +97,7 @@ export default {
 
 .header-logo {
   width: 60px;
-  height: 35px;
+  height: 43x;
   margin-right: 12px;
 }
 

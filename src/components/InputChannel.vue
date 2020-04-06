@@ -1,22 +1,30 @@
 <template>
-	<div class="channel-wrapper control has-icons-left">
-		<input 
-			@input="handleChange" 
-			id="channel" 
-			class="ag-rounded input"
-			:class="state"
-			type="text" 
-			:placeholder="placeholder" />
-		<span class="icon is-small is-left">
-		<img :src="require('../assets/images/ag-login.png')" alt="" />
-		</span>
-		<span class="validate-icon">
-      <i v-if="state" class="ag-icon" :class="{'ag-icon-valid': state === 'is-success', 'ag-icon-invalid': state === 'is-danger'}" />           
-		</span>
-		<div class="validate-msg">
-      {{errorMsg}}
-		</div>
-	</div>
+  <div class="channel-wrapper control has-icons-left">
+    <input
+      @input="handleChange"
+      id="channel"
+      class="ag-rounded input"
+      :class="state"
+      type="text"
+      :placeholder="placeholder"
+    />
+    <span class="icon is-small is-left">
+      <img :src="require('../assets/images/ag-login.png')" alt="" />
+    </span>
+    <span class="validate-icon">
+      <i
+        v-if="state"
+        class="ag-icon"
+        :class="{
+          'ag-icon-valid': state === 'is-success',
+          'ag-icon-invalid': state === 'is-danger',
+        }"
+      />
+    </span>
+    <div class="validate-msg">
+      {{ errorMsg }}
+    </div>
+  </div>
 </template>
 
 <script>
@@ -25,7 +33,7 @@ export default {
   data() {
     return {
       state: "",
-      errorMsg: ""
+      errorMsg: "",
     };
   },
 
@@ -58,8 +66,8 @@ export default {
     handleChange(e) {
       let state = this.validate(e.target.value);
       this.$emit("change", e.target.value, state);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -72,7 +80,7 @@ export default {
 }
 
 #channel {
-  background: transparent;
+  background: black;
   color: white;
   padding: 8px 50px;
   height: 35px;
@@ -120,5 +128,3 @@ export default {
   color: rgb(178, 206, 149);
 }
 </style>
-
-

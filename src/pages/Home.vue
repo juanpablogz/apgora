@@ -4,16 +4,16 @@
     <div class="ag-main">
       <section class="login-wrapper">
         <div class="login-header">
-          <img :src="require('../assets/images/ag-logo.png')" alt="" />
-          <p class="login-title">AgoraWeb v2.1</p>
-          <p class="login-subtitle">Powering Real-Time Communications</p>
+          <!-- <img :src="require('../assets/images/ag-logo.png')" alt="" /> -->
+          <p class="login-title">AppGora v1.0</p>
+          <p class="login-subtitle">Crear sala</p>
         </div>
         <div class="login-body">
           <div class="columns">
             <div class="column is-12">
               <InputChannel
                 @change="handleChannel"
-                placeholder="Input a room name here"
+                placeholder="Ingresa el nombre de la sala"
               ></InputChannel>
             </div>
           </div>
