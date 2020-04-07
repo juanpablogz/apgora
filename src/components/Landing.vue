@@ -44,7 +44,7 @@
                         size="sm"
                         color="purple"
                         @click.native="elegant = true"
-                        >Sig In
+                        >Ingresar
                       </mdb-btn>
 
                       <mdb-modal
@@ -55,7 +55,7 @@
                       >
                         <mdb-modal-header class="text-center">
                           <mdb-modal-title tag="h3" bold class="w-100 my-3"
-                            >Sign in</mdb-modal-title
+                            >Ingresar</mdb-modal-title
                           >
                         </mdb-modal-header>
                         <mdb-modal-body class="mx-3">
@@ -127,12 +127,12 @@
                         size="sm"
                         color="purple"
                         @click.native="accept = true"
-                        >Sign Up
+                        >Registrarme
                       </mdb-btn>
                       <mdb-modal :show="accept" @close="accept = false" accept>
                         <mdb-modal-header class="text-center">
                           <mdb-modal-title tag="h3" bold class="w-100 my-3"
-                            >Sign up</mdb-modal-title
+                            >Registrarme</mdb-modal-title
                           >
                         </mdb-modal-header>
                         <mdb-modal-body class="mx-3">
