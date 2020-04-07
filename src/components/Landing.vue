@@ -1030,6 +1030,6 @@ export default {
   margin: 0px;
 }
 .modal-dialog .modal-content {
-  margin: 0px !important;
+  margin: 0px;
 }
 </style>

@@ -502,7 +502,9 @@ export default {
 .ag-btn.off.audioControlBtn .ag-icon-mic-off {
   display: inline-block;
 }
-
+.meeting.wrapper {
+  background-color: #110133;
+}
 video {
   max-width: unset !important;
 }
