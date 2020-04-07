@@ -415,7 +415,7 @@ export default {
 }
 .ag-item {
   border-radius: 6px;
-  border: 2px #00b6ed solid;
+  border: 2px;
   background: url("../assets/images/avatar.png") center no-repeat;
   height: 100%;
   width: 100%;
@@ -507,5 +507,8 @@ export default {
 }
 video {
   max-width: unset !important;
+}
+.ag-header-msg {
+  font-size: 20px;
 }
 </style>
