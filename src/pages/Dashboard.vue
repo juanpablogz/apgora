@@ -41,7 +41,7 @@
       </b-navbar>
     </div>
 
-    <section class="mt-lg-5">
+    <!-- <section class="mt-lg-5">
       <mdb-row>
         <mdb-col xl="3" md="6" class="mb-r">
           <mdb-card cascade class="cascading-admin-card">
@@ -148,11 +148,11 @@
           </mdb-card>
         </mdb-col>
       </mdb-row>
-    </section>
+    </section> -->
 
     <section></section>
 
-    <mdb-row>
+    <!-- <mdb-row>
       <mdb-col xl="3" md="6" class="mb-3">
         <mdb-card class="classic-admin-card primary-color">
           <mdb-card-body>
@@ -249,11 +249,22 @@
           </mdb-card-body>
         </mdb-card>
       </mdb-col>
-    </mdb-row>
+    </mdb-row> -->
+
+    <section>
+      <mdb-row>
+        <mdb-col xl="3" md="6" class="mb-r">
+          <mdb-card cascade class="cascading-admin-card">
+            <schedule-video-call/>
+          </mdb-card>
+        </mdb-col>
+      </mdb-row>
+    </section>
   </section>
 </template>
 
 <script>
+import ScheduleVideoCall from './../components/ScheduleVideoCall'
 import {
   mdbRow,
   mdbCol,
@@ -319,6 +330,7 @@ export default {
     mdbFooter,
     waves,
     ftr: mdbFooter,
+    'schedule-video-call': ScheduleVideoCall
   },
   data() {
     return {
